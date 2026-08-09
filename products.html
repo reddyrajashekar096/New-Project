@@ -1,0 +1,574 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Varahi Milk Products</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(4, 165, 39);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            border: 2px solid #19ac0b;
+            padding: 15px;
+            width: 28%;
+            min-width: 250px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+        }
+
+        .card img {
+            height: 150px;
+            width: 180px;
+            object-fit: contain;
+        }
+
+        .quantity {
+            margin: 15px;
+        }
+
+        .quantity button {
+            width: 35px;
+            height: 30px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .quantity span {
+            margin: 0 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .cart-btn,
+        .order-btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .cart-btn {
+            background-color: #2196F3;
+        }
+
+        .order-btn {
+            background-color: #04a527;
+        }
+
+        .cart-message {
+            color: green;
+            font-weight: bold;
+        }
+
+        .cloud {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        hr {
+            border: 1px solid green;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <img class="cloud"
+         src="C:\Users\ACER\Downloads\image_40731104.png"
+         alt="Background">
+
+    <h1>🤗 Welcome to Varahi Milk Products 🤗</h1>
+
+    <h2>These are the products:</h2>
+
+
+    <!-- GHEE -->
+    <div class="container">
+
+        <div class="card">
+
+            <img src="C:\Users\ACER\Downloads\ghee.jpg"
+                 alt="Ghee">
+
+            <h2>Ghee</h2>
+
+            <p>
+                Pure homemade cow ghee made from fresh milk.
+            </p>
+
+            <h3 class="price">
+                Price: ₹599
+            </h3>
+
+            <div class="quantity">
+
+                <button onclick="decrease(this)">
+                    -
+                </button>
+
+                <span class="qty">
+                    1
+                </span>
+
+                <button onclick="increase(this)">
+                    +
+                </button>
+
+            </div>
+
+            <button class="cart-btn"
+                    onclick="addToCart(this)">
+                Add to Cart
+            </button>
+
+            <h3 class="cart-message"></h3>
+
+            <button class="order-btn"
+                    onclick="placeOrder(this)">
+                Place Order
+            </button>
+
+        </div>
+
+
+        <!-- MILK -->
+
+        <div class="card">
+
+            <img src="C:\Users\ACER\Downloads\milk.jfif"
+                 alt="Milk">
+
+            <h2>Milk</h2>
+
+            <p>
+                Pure cow milk.
+            </p>
+
+            <h3 class="price">
+                Price: ₹100
+            </h3>
+
+            <div class="quantity">
+
+                <button onclick="decrease(this)">
+                    -
+                </button>
+
+                <span class="qty">
+                    1
+                </span>
+
+                <button onclick="increase(this)">
+                    +
+                </button>
+
+            </div>
+
+            <button class="cart-btn"
+                    onclick="addToCart(this)">
+                Add to Cart
+            </button>
+
+            <h3 class="cart-message"></h3>
+
+            <button class="order-btn"
+                    onclick="placeOrder(this)">
+                Place Order
+            </button>
+
+        </div>
+
+
+        <!-- CURD -->
+
+        <div class="card">
+
+            <img src="C:\Users\ACER\Downloads\curd.jfif"
+                 alt="Curd">
+
+            <h2>Curd</h2>
+
+            <p>
+                Pure homemade cow curd made from fresh milk.
+            </p>
+
+            <h3 class="price">
+                Price: ₹100
+            </h3>
+
+            <div class="quantity">
+
+                <button onclick="decrease(this)">
+                    -
+                </button>
+
+                <span class="qty">
+                    1
+                </span>
+
+                <button onclick="increase(this)">
+                    +
+                </button>
+
+            </div>
+
+            <button class="cart-btn"
+                    onclick="addToCart(this)">
+                Add to Cart
+            </button>
+
+            <h3 class="cart-message"></h3>
+
+            <button class="order-btn"
+                    onclick="placeOrder(this)">
+                Place Order
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <hr>
+
+
+    <!-- SECOND ROW -->
+
+    <div class="container">
+
+        <!-- JUNNU -->
+
+        <div class="card">
+
+            <img src="C:\Users\ACER\Downloads\junnu.jfif"
+                 alt="Junnu">
+
+            <h2>Junnu</h2>
+
+            <p>
+                Pure homemade Junnu made from fresh milk.
+            </p>
+
+            <h3 class="price">
+                Price: ₹299
+            </h3>
+
+            <div class="quantity">
+
+                <button onclick="decrease(this)">
+                    -
+                </button>
+
+                <span class="qty">
+                    1
+                </span>
+
+                <button onclick="increase(this)">
+                    +
+                </button>
+
+            </div>
+
+            <button class="cart-btn"
+                    onclick="addToCart(this)">
+                Add to Cart
+            </button>
+
+            <h3 class="cart-message"></h3>
+
+            <button class="order-btn"
+                    onclick="placeOrder(this)">
+                Place Order
+            </button>
+
+        </div>
+
+
+        <!-- PALAKOVA -->
+
+        <div class="card">
+
+            <img src="C:\Users\ACER\Downloads\milk cake.jfif"
+                 alt="Palakova">
+
+            <h2>Palakova</h2>
+
+            <p>
+                Pure homemade Palakova made from fresh milk.
+            </p>
+
+            <h3 class="price">
+                Price: ₹299
+            </h3>
+
+            <div class="quantity">
+
+                <button onclick="decrease(this)">
+                    -
+                </button>
+
+                <span class="qty">
+                    1
+                </span>
+
+                <button onclick="increase(this)">
+                    +
+                </button>
+
+            </div>
+
+            <button class="cart-btn"
+                    onclick="addToCart(this)">
+                Add to Cart
+            </button>
+
+            <h3 class="cart-message"></h3>
+
+            <button class="order-btn"
+                    onclick="placeOrder(this)">
+                Place Order
+            </button>
+
+        </div>
+
+
+        <!-- MILK PEDA -->
+
+        <div class="card">
+
+            <img src="C:\Users\ACER\Downloads\palakova.jfif"
+                 alt="Milk Peda">
+
+            <h2>Milk Peda</h2>
+
+            <p>
+                Pure homemade milk peda made from fresh milk.
+            </p>
+
+            <h3 class="price">
+                Price: ₹199
+            </h3>
+
+            <div class="quantity">
+
+                <button onclick="decrease(this)">
+                    -
+                </button>
+
+                <span class="qty">
+                    1
+                </span>
+
+                <button onclick="increase(this)">
+                    +
+                </button>
+
+            </div>
+
+            <button class="cart-btn"
+                    onclick="addToCart(this)">
+                Add to Cart
+            </button>
+
+            <h3 class="cart-message"></h3>
+
+            <button class="order-btn"
+                    onclick="placeOrder(this)">
+                Place Order
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // =========================
+        // INCREASE
+        // =========================
+
+        function increase(button) {
+
+            let card = button.closest(".card");
+
+            let quantity =
+                card.querySelector(".qty");
+
+            let value =
+                parseInt(quantity.innerText);
+
+            value++;
+
+            quantity.innerText = value;
+        }
+
+
+        // =========================
+        // DECREASE
+        // =========================
+
+        function decrease(button) {
+
+            let card = button.closest(".card");
+
+            let quantity =
+                card.querySelector(".qty");
+
+            let value =
+                parseInt(quantity.innerText);
+
+            if (value > 1) {
+
+                value--;
+
+            }
+
+            quantity.innerText = value;
+        }
+
+
+        // =========================
+        // ADD TO CART
+        // =========================
+
+        function addToCart(button) {
+
+            let card =
+                button.closest(".card");
+
+            let productName =
+                card.querySelector("h2").innerText;
+
+            let priceText =
+                card.querySelector(".price").innerText;
+
+            let price =
+                parseInt(
+                    priceText.replace(/[^\d]/g, "")
+                );
+
+            let quantity =
+                parseInt(
+                    card.querySelector(".qty").innerText
+                );
+
+            let total =
+                price * quantity;
+
+            let message =
+                card.querySelector(".cart-message");
+
+            message.innerHTML =
+                productName +
+                " added to cart!<br>" +
+                "Quantity: " +
+                quantity +
+                "<br>" +
+                "Total Amount: ₹" +
+                total;
+
+            // Store amount in card
+            card.dataset.total = total;
+
+        }
+
+
+        // =========================
+        // PLACE ORDER
+        // =========================
+
+        function placeOrder(button) {
+
+            let card =
+                button.closest(".card");
+
+            let productName =
+                card.querySelector("h2").innerText;
+
+            let priceText =
+                card.querySelector(".price").innerText;
+
+            let price =
+                parseInt(
+                    priceText.replace(/[^\d]/g, "")
+                );
+
+            let quantity =
+                parseInt(
+                    card.querySelector(".qty").innerText
+                );
+
+            let total =
+                price * quantity;
+
+
+            // Save order information
+
+            localStorage.setItem(
+                "productName",
+                productName
+            );
+
+            localStorage.setItem(
+                "price",
+                price
+            );
+
+            localStorage.setItem(
+                "quantity",
+                quantity
+            );
+
+            localStorage.setItem(
+                "total",
+                total
+            );
+
+
+            // Redirect to payment page
+
+            window.location.href =
+                "payment.html";
+        }
+
+    </script>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,51 @@
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    margin-top:50px;
+}
+
+.card{
+    width:350px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+img{
+    width:250px;
+    border-radius:10px;
+}
+
+.quantity{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin:20px;
+}
+
+.quantity button{
+    width:35px;
+    height:35px;
+    font-size:20px;
+}
+
+.cart-btn,.order-btn{
+    background:green;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+.order-btn{
+    background:orange;
+}
