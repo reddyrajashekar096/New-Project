@@ -1,10 +1,99 @@
+
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
-    <title>Payment - Varahi Milk Products</title>
+    <title> Final Cart </title>
+</head>
 
-    <style>
+<body>
+
+<div class="payment-box">
+
+    <h1>
+        💳 Payment
+    </h1>
+
+<div class="total">
+
+        Total Amount:
+        ₹<span id="total"></span>
+
+    </div>
+
+
+    <h3>
+        Select Payment Method
+    </h3>
+
+
+    <!-- PHONEPE -->
+<a href="phonepe.html">
+    <button class="payment-button phonepe"
+            onclick="payWithUPI()" >
+
+        📱 Pay with PhonePe
+
+    </button>
+</a>
+
+    <!-- GOOGLE PAY -->
+
+    <button class="payment-button googlepay"
+            onclick="payWithUPI()">
+
+        📱 Pay with Google Pay
+
+    </button>
+
+
+    <!-- PAYTM -->
+
+    <button class="payment-button paytm"
+            onclick="payWithUPI()">
+
+        💳 Pay with Paytm
+
+    </button>
+
+
+    <!-- UPI -->
+
+    <button class="payment-button upi"
+            onclick="payWithUPI()">
+
+        🔗 Pay using UPI
+
+    </button>
+
+
+    <!-- CASH ON DELIVERY -->
+
+    <button class="payment-button cod"
+            onclick="cashOnDelivery()">
+
+        💵 Cash on Delivery
+
+    </button>
+
+
+    <button class="payment-button back"
+            onclick="goBack()">
+
+        ← Back to Products
+
+    </button>
+
+
+</div>
+
+
+
+
+</body>
+  <style>
+
+
+<style>
 
         body {
 
@@ -130,151 +219,16 @@
 
     </style>
 
-</head>
+  <script>
 
-
-<body>
-
-
-<div class="payment-box">
-
-    <h1>
-        💳 Payment
-    </h1>
-
-
-    <div class="order-details">
-
-        <h3 id="product"></h3>
-
-        <p>
-            Quantity:
-            <span id="quantity"></span>
-        </p>
-
-        <p>
-            Price:
-            ₹<span id="price"></span>
-        </p>
-
-    </div>
-
-
-    <div class="total">
-
-        Total Amount:
-        ₹<span id="total"></span>
-
-    </div>
-
-
-    <h3>
-        Select Payment Method
-    </h3>
-
-
-    <!-- PHONEPE -->
-
-    <button class="payment-button phonepe"
-            onclick="payWithUPI()">
-
-        📱 Pay with PhonePe
-
-    </button>
-
-
-    <!-- GOOGLE PAY -->
-
-    <button class="payment-button googlepay"
-            onclick="payWithUPI()">
-
-        📱 Pay with Google Pay
-
-    </button>
-
-
-    <!-- PAYTM -->
-
-    <button class="payment-button paytm"
-            onclick="payWithUPI()">
-
-        💳 Pay with Paytm
-
-    </button>
-
-
-    <!-- UPI -->
-
-    <button class="payment-button upi"
-            onclick="payWithUPI()">
-
-        🔗 Pay using UPI
-
-    </button>
-
-
-    <!-- CASH ON DELIVERY -->
-
-    <button class="payment-button cod"
-            onclick="cashOnDelivery()">
-
-        💵 Cash on Delivery
-
-    </button>
-
-
-    <button class="payment-button back"
-            onclick="goBack()">
-
-        ← Back to Products
-
-    </button>
-
-
-</div>
-
-
-<script>
-
-    // Get order information
-
-    let product =
-        localStorage.getItem("productName");
-
-    let price =
-        localStorage.getItem("price");
-
-    let quantity =
-        localStorage.getItem("quantity");
-
-    let total =
+  let total =
         localStorage.getItem("total");
-
-
-    // Display order information
-
-    document.getElementById("product")
-        .innerText =
-        product;
-
-    document.getElementById("price")
-        .innerText =
-        price;
-
-    document.getElementById("quantity")
-        .innerText =
-        quantity;
-
-    document.getElementById("total")
+         document.getElementById("total")
         .innerText =
         total;
 
 
-    // =========================
-    // UPI PAYMENT
-    // =========================
-
-    function payWithUPI() {
+ function payWithUPI() {
 
         /*
             Replace this with your real
@@ -347,12 +301,14 @@
 
     }
 
-</script>
 
 
 
 
 
-</body>
 
-</html>
+
+
+
+
+  </script>

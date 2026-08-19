@@ -1,21 +1,14 @@
-<<<<<<< HEAD
-```html
-=======
->>>>>>> 9dad10c (Modified)
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<<<<<<< HEAD
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-=======
-     <div class="cart-container">
-    <button class="total-cart" onclick="goToCart()">
+   
+     <div class="cart-container" style="text-align: right;">
+    <button class="total-cart" onclick="goToCart()" >
         Total Cart
     </button>
 </div>
->>>>>>> 9dad10c (Modified)
 
     <title>Varahi Milk Products</title>
 
@@ -112,8 +105,7 @@
         hr {
             border: 1px solid green;
         }
-<<<<<<< HEAD
-=======
+ HEAD
       
   .cart-container {
     display: flex;
@@ -131,13 +123,20 @@
     font-size: 16px;
 }
 
-.total-cart:hover {
-    background-color: #0056b3;
+.total-cart:hover   {
+      display: inline-block;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
-    
 
 
->>>>>>> 9dad10c (Modified)
+
 
     </style>
 </head>
@@ -250,7 +249,6 @@
         </div>
 
 
-        <!-- CURD -->
 
         <div class="card">
 
@@ -303,11 +301,9 @@
     <hr>
 
 
-    <!-- SECOND ROW -->
 
     <div class="container">
 
-        <!-- JUNNU -->
 
         <div class="card">
 
@@ -355,7 +351,6 @@
         </div>
 
 
-        <!-- PALAKOVA -->
 
         <div class="card">
 
@@ -403,7 +398,6 @@
         </div>
 
 
-        <!-- MILK PEDA -->
 
         <div class="card">
 
@@ -455,9 +449,7 @@
 
     <script>
 
-        // =========================
-        // INCREASE
-        // =========================
+      
 
         function increase(button) {
 
@@ -475,9 +467,7 @@
         }
 
 
-        // =========================
-        // DECREASE
-        // =========================
+      
 
         function decrease(button) {
 
@@ -499,51 +489,52 @@
         }
 
 
-        // =========================
-        // ADD TO CART
-        // =========================
+      
+       function addToCart(button) {
+    let card = button.closest(".card");
 
-        function addToCart(button) {
+    let productName = card.querySelector("h2").innerText;
 
-            let card =
-                button.closest(".card");
+    let priceText = card.querySelector(".price").innerText;
+    let price = parseInt(priceText.replace(/[^\d]/g, ""));
 
-            let productName =
-                card.querySelector("h2").innerText;
+    let quantity = parseInt(card.querySelector(".qty").innerText);
 
-            let priceText =
-                card.querySelector(".price").innerText;
+    let total = price * quantity;
 
-            let price =
-                parseInt(
-                    priceText.replace(/[^\d]/g, "")
-                );
+    // Get existing cart
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-            let quantity =
-                parseInt(
-                    card.querySelector(".qty").innerText
-                );
+    // Check if product already exists
+    let existingProduct = cart.find(item => item.name === productName);
 
-            let total =
-                price * quantity;
+    if (existingProduct) {
+        existingProduct.quantity = quantity;
+        existingProduct.total = price * quantity;
+    } else {
+        cart.push({
+            name: productName,
+            price: price,
+            quantity: quantity,
+            total: total
+        });
+    }
 
-            let message =
-                card.querySelector(".cart-message");
+    // Save cart
+    localStorage.setItem("cart", JSON.stringify(cart));
 
-            message.innerHTML =
-                productName +
-                " added to cart!<br>" +
-                "Quantity: " +
-                quantity +
-                "<br>" +
-                "Total Amount: ₹" +
-                total;
+    // Show message
+    let message = card.querySelector(".cart-message");
 
-            // Store amount in card
-            card.dataset.total = total;
-
-        }
-
+    message.innerHTML =
+        productName +
+        " added to cart!<br>" +
+        "Quantity: " +
+        quantity +
+        "<br>" +
+        "Total Amount: ₹" +
+        total;
+}
 
         // =========================
         // PLACE ORDER
@@ -603,15 +594,33 @@
                 "payment.html";
         }
 
-<<<<<<< HEAD
-=======
-    function goToCart() {
-        
+    function goToCart (button){
+
+      
 
     }
- 
+            function goToCart() {
 
->>>>>>> 9dad10c (Modified)
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    let grandTotal = 0;
+
+    cart.forEach(function(item) {
+        grandTotal += item.price * item.quantity;
+    });
+
+    // Save grand total
+    localStorage.setItem("grandTotal", grandTotal);
+
+    // Go to cart page
+    window.location.href = "cart.html";
+}
+
     </script>
 
 </body>

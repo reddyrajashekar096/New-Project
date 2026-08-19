@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Varahi Milk Products - Cart</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5fff5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #04a527;
+        }
+
+        .cart-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .cart-item {
+            background: white;
+            border: 2px solid #19ac0b;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .cart-item h2 {
+            color: #04a527;
+        }
+
+        .grand-total {
+            background-color: #04a527;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        .back-btn {
+            background-color: #007bff;
+        }
+
+        .order-btn {
+            background-color: #04a527;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🛒 Your Cart</h1>
+
+    <div class="cart-container">
+
+        <div id="cartItems"></div>
+
+        <div class="grand-total">
+            Grand Total: ₹<span id="grandTotal">0</span>
+        </div>
+
+        <br>
+
+        <div style="text-align:center;">
+
+            <button class="back-btn" onclick="goBack()">
+                Continue Shopping
+            </button>
+
+            <button class="order-btn" onclick="placeOrder()">
+                Place Order
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function displayCart() {
+
+            let cart =
+                JSON.parse(localStorage.getItem("cart")) || [];
+
+            let cartItems =
+                document.getElementById("cartItems");
+
+            let grandTotal = 0;
+
+            cartItems.innerHTML = "";
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML =
+                    "<h2>Your cart is empty!</h2>";
+
+                document.getElementById("grandTotal").innerText = "0";
+
+                return;
+            }
+
+
+            cart.forEach(function(item, index) {
+
+                let total =
+                    item.price * item.quantity;
+
+                grandTotal += total;
+
+
+                let div =
+                    document.createElement("div");
+
+                div.className = "cart-item";
+
+                div.innerHTML = `
+                    <h2>${item.name}</h2>
+
+                    <p>
+                        Price: ₹${item.price}
+                    </p>
+
+                    <p>
+                        Quantity: ${item.quantity}
+                    </p>
+
+                    <p>
+                        Product Total: ₹${total}
+                    </p>
+
+                    <button
+                        class="remove-btn"
+                        onclick="removeItem(${index})">
+                        Remove
+                    </button>
+                `;
+
+                cartItems.appendChild(div);
+
+            });
+
+
+            document.getElementById("grandTotal").innerText =
+                grandTotal;
+
+            // Save grand total
+            localStorage.setItem(
+                "grandTotal",
+                grandTotal
+            );
+        }
+
+
+        function removeItem(index) {
+
+            let cart =
+                JSON.parse(localStorage.getItem("cart")) || [];
+
+            cart.splice(index, 1);
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+            displayCart();
+        }
+
+
+        function goBack() {
+
+            window.location.href =
+                "index.html";
+        }
+
+
+        function placeOrder() {
+
+            let cart =
+                JSON.parse(localStorage.getItem("cart")) || [];
+
+            if (cart.length === 0) {
+
+                alert("Your cart is empty!");
+
+                return;
+            }
+
+            let grandTotal =
+                localStorage.getItem("grandTotal");
+
+            localStorage.setItem(
+                "orderCart",
+                JSON.stringify(cart)
+            );
+
+            localStorage.setItem(
+                "total",
+                grandTotal
+            );
+
+            window.location.href =
+                "maincart.html";
+        }
+
+
+        displayCart();
+
+        
+
+    </script>
+
+</body>
+
+</html>
